@@ -45,14 +45,18 @@ class GlobalController extends controller{
 		return $ret;
 	}
 
-	public function actionPharm($city_id = 66 ,$firm_id =  1 ){
+	public function actionPharm($city_id  = null,$firm_id = Null  ){
 
-		$Phar = Phar::find()->asArray()->where( 'city_id = ' . $city_id)->All();
-		$retu= null ;
-		foreach($Phar as $phar) {
-			$retu = $retu . "<option value=\"\">" . $phar[ "name_phar" ] . "</option> \n";
+		if ($city_id!=null && $firm_id!=null) {
+			$Phar = Phar::find ()->asArray ()->where ( [ 'city_id' => $city_id , 'firm_id' => $firm_id ] )->All ();
+			$retu = null;
+			foreach ( $Phar as $phar ) {
+				$retu = $retu . "<option value=\"\">" . $phar[ "name_phar" ] . "</option> \n";
+			}
+
+			return $retu;
 		}
-		return $this->render("phar",compact("retu"));
+		//return $this->render("phar",compact("retu"));
 	}
 
 }
