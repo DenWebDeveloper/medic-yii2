@@ -76,6 +76,7 @@ AppAsset::register($this);
 </footer>
 
 <?php $this->endBody() ?>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 </body>
 </html>
 <?php $this->endPage() ?>
