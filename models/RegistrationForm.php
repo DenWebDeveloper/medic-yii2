@@ -17,17 +17,12 @@ class RegistrationForm extends ActiveRecord {
 		return 'phar_user';
 	}
 
-//	public $name;
-//	public $secondname;
-//	public $surname;
 	public $password ;
 	public $Id_phar ;
 	public $region ;
 	public $city ;
 	public $firm_pharmacy ;
-//	public $password_repeat ;
-//	public $email;
-//	public $phone ;
+
 
 	public function attributeLabels(){
 		return [
@@ -45,7 +40,8 @@ class RegistrationForm extends ActiveRecord {
 		return [
 			[['name','email','secondname','surname','password','phone','Id_phar'],'required','message'=>'Обов\'язкове поле'],
 			['email','email'],
-			['phone','number','max'=>999999999 ,'min'=>99999999],
+            ['phone','number','max'=>999999999 ,'min'=>99999999],
+			//['phone','match', 'pattern' => ' [0-9]{9}$', 'message' => 'Невірний номер' ]
 //			['secondname','myRule'],
 			//['verificationCode', 'captcha']
 		];
