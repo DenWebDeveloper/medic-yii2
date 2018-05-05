@@ -11,7 +11,7 @@ $JS = <<<JS
 
 $('#registrationform-region')[0].addEventListener('change',function (){
     $.ajax ({
-        url: 'index.php?r=ajax/city',
+        url: '/ajax/city',
         data:{region_id : $(this).val()},
         type : 'Get',
         success: function(res){
@@ -32,7 +32,7 @@ $('#registrationform-region')[0].addEventListener('change',function (){
 //
 $('#registrationform-city')[0].addEventListener('change',function (){
     $.ajax ({
-        url: 'index.php?r=ajax/firm',
+        url: '/ajax/firm',
         data:{city_id : $(this).val()},
         type : 'Get',
         success: function(res1){
@@ -51,7 +51,7 @@ $('#registrationform-city')[0].addEventListener('change',function (){
 
 $('#registrationform-firm_pharmacy')[0].addEventListener('change',function (){
     $.ajax ({
-        url: 'index.php?r=ajax/pharm',
+        url: '/ajax/pharm',
         data:{city_id : $('#registrationform-city').val(),firm_id : $(this).val()},
         type : 'Get',
         success: function(res1){

@@ -11,6 +11,9 @@ namespace app\controllers;
 use app\models\List_user;
 use app\models\Region;
 use app\models\Login;
+use app\models\Producer;
+use app\models\Firm;
+use app\models\User_pharm;
 use yii\web\Controller;
 use Yii;
 use app\models\RegistrationForm;
@@ -65,17 +68,31 @@ class GlobalController extends controller{
 
         if ($LoginModel->load(Yii::$app->request->post())) {
             if ( $LoginModel->validate () ) {
-               // var_dump($LoginModel->login);
                 $user_hash  = Login::find()->select ( [ 'pass','id','type' ] )->AsArray()-> where ( [ 'login' => addslashes ($LoginModel->login)])->One();
                 $ret = $user_hash["pass"];
-                //var_dump($ret);
                 if (isset($user_hash)){
-                    //$ret = 1;
                     if (password_verify(md5($LoginModel->pass."GoodSaltU8Tf"), $user_hash["pass"])) {
                         if ($user_hash['type'] != null && $user_hash['id'] !=null ){
-                            $_SESSION['user_type'] = $user_hash['type'];
-                            $_SESSION['user_id'] = $user_hash['id'];
-                            //$ret += 2 ;
+                            if ($user_hash['type']=='user') {
+                                $_SESSION['user_type'] = $user_hash['type'];
+                                $_SESSION['user_id'] = $user_hash['id'];
+                            }
+                            if ($user_hash['type']=='pharm'){
+                                $_SESSION['user_type'] = $user_hash['type'];
+                                //$_SESSION['user_id'] = $user_hash['id'];
+                                $pharm = User_pharm::find()->select(['id_firm','phat_logo'])->asArray()->where(['user_id'=> $user_hash['id'] ])->One();
+                                $_SESSION['phat_logo'] = $pharm['phat_logo'];
+                                $_SESSION['id_firm_pharm'] = $pharm['id_firm'];
+                            }
+                            if ($user_hash['type']=='firm'){
+                                $_SESSION['user_type'] = $user_hash['type'];
+
+                                $pharm = Producer::find()->select(['name','phat_logo','id'])->asArray()->where(['user_id'=> $user_hash['id'] ])->One();
+                                $_SESSION['phat_logo'] = $pharm['phat_logo'];
+                                $_SESSION['user_name'] = $pharm['name'];
+                                $_SESSION['producer_id'] = $pharm['id'];
+
+                            }
                             return $this->redirect('/site/inlogin');
                         }
                       //  $ret += 3 ;
@@ -92,6 +109,10 @@ class GlobalController extends controller{
     public function actionExit(){
         $session = Yii::$app->session;
         $session->remove('user_id');
+        $session->remove('user_type');
+        $session->remove('id_firm_pharm');
+        $session->remove('producer_id');
+        $session->remove('phat_logo');
         $session->remove('user_type');
         return $this->redirect('/');
     }
