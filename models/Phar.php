@@ -8,7 +8,6 @@
 
 namespace app\models;
 
-
 use yii\db\ActiveRecord;
 
 class Phar extends ActiveRecord {

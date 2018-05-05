@@ -12,5 +12,7 @@ namespace app\models;
 use yii\db\ActiveRecord;
 
 class Firm extends ActiveRecord {
-
+    public static function tableName(){
+        return 'pharm_firm';
+    }
 }

@@ -39,10 +39,6 @@ class AjaxController extends Controller
 
     public function actionFirm($city_id = null){
 
-        //
-        // // переробити з допомогою distinct
-        //
-
         if ($city_id!=null) {
             $Phar = Phar::Find()-> select(['firm_id']) -> distinct()-> asArray ()->where ( [ 'city_id' => $city_id ] )->All ();
             $retu = array();
