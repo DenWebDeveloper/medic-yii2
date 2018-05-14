@@ -45,8 +45,8 @@ AppAsset::register($this);
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item active"><a class="nav-link nav-link--course" href="#">Курси</a></li>
-                    <li class="nav-item"><a class="nav-link nav-link--materials" href="#">Матеріали</a></li>
+                    <li class="nav-item active"><a class="nav-link nav-link--course" href="/">Курси</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link--materials" href="/">Матеріали</a></li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                   <?php echo loginWidget::widget()?>
@@ -65,7 +65,7 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 footer__logo"><a href="#"><img src="/img/logo.png" width="150px" height="150px" alt="Logo Pharm Comunnity"></a>
+            <div class="col-md-4 footer__logo"><a href="/"><img src="/img/logo.png" width="150px" height="150px" alt="Logo Pharm Comunnity"></a>
                 <div class="footer__brand-name"><span>Pharm</span><hr><span>Community</span><br><small>інтерактивні онлайн курси</small>
                     <ul class="social list-unstyled">
                         <li><a class="social__link" href="#">VK</a></li>

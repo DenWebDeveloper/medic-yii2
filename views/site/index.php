@@ -12,7 +12,7 @@
                     <h2 class="section-items__title">Компанії виробнику/Маркетинговій компанії</h2>
                     <p class="section-items__paragraph">Світ не стоїть на місці, Digital-технології пронизують усі сфери життя. Ви справді хочете залишитись на самоті із застарілими методами промоції? Ми пропонуємо революційний підхід! Ви з нами?</p>
                 </div>
-                <div class="section-items__img wow bounceInLeft" data-wow-delay="1s"><img src="https://denwebdeveloper.github.io/medicine/app/assetsimg/production_isometr.png"></div>
+                <div class="section-items__img wow bounceInLeft" data-wow-delay="1s"><img src="/img/production_isometr.png"></div>
             </li>
             <li class="section-items__item">
                 <div class="section-items__text wow bounceInRight" data-wow-delay="0.2s">

@@ -9,7 +9,11 @@
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 //echo $ret;
+if ($ret!= null){
+    echo "<div class=\"alert alert-danger\" role=\"alert\">";
 echo $ret;
+echo "</div>";
+}
 ?>
 <?php $form = ActiveForm::begin()?>
 <?=$form->field($LoginModel,"login")?>

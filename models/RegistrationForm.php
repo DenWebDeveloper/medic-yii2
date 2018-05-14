@@ -31,6 +31,7 @@ class RegistrationForm extends ActiveRecord {
 			'surname'=>'Прізвище',
 			'password'=>'Пароль',
 			//'password_repeat'=>'Перевірка паролю',
+            'region'=>'регіон',
 			'email'=>'email',
 			'phone'=>'Номер телефону'
 		];

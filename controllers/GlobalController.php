@@ -69,13 +69,15 @@ class GlobalController extends controller{
         if ($LoginModel->load(Yii::$app->request->post())) {
             if ( $LoginModel->validate () ) {
                 $user_hash  = Login::find()->select ( [ 'pass','id','type' ] )->AsArray()-> where ( [ 'login' => addslashes ($LoginModel->login)])->One();
-                $ret = $user_hash["pass"];
-                if (isset($user_hash)){
+               // $ret = $user_hash["pass"];
+                if ($user_hash){
                     if (password_verify(md5($LoginModel->pass."GoodSaltU8Tf"), $user_hash["pass"])) {
                         if ($user_hash['type'] != null && $user_hash['id'] !=null ){
                             if ($user_hash['type']=='user') {
                                 $_SESSION['user_type'] = $user_hash['type'];
                                 $_SESSION['user_id'] = $user_hash['id'];
+                                return $this->redirect('/'.$_SESSION['user_type']);
+
                             }
                             if ($user_hash['type']=='pharm'){
                                 $_SESSION['user_type'] = $user_hash['type'];
@@ -83,6 +85,7 @@ class GlobalController extends controller{
                                 $pharm = User_pharm::find()->select(['id_firm','phat_logo'])->asArray()->where(['user_id'=> $user_hash['id'] ])->One();
                                 $_SESSION['phat_logo'] = $pharm['phat_logo'];
                                 $_SESSION['id_firm_pharm'] = $pharm['id_firm'];
+                                return $this->redirect('/'.$_SESSION['user_type']);
                             }
                             if ($user_hash['type']=='firm'){
                                 $_SESSION['user_type'] = $user_hash['type'];
@@ -91,15 +94,24 @@ class GlobalController extends controller{
                                 $_SESSION['phat_logo'] = $pharm['phat_logo'];
                                 $_SESSION['user_name'] = $pharm['name'];
                                 $_SESSION['producer_id'] = $pharm['id'];
-
+                                return $this->redirect('/'.$_SESSION['user_type']);
                             }
-                            return $this->redirect('/site/inlogin');
+                            //admin
+                            if ($user_hash['type']=='admin'){
+                                $_SESSION['user_type'] = $user_hash['type'];
+                                $_SESSION['admin_id'] = $user_hash['id'];
+                                return $this->redirect('/'.$_SESSION['user_type']);
+                            }
+                            return $this->redirect('/site/exit');
                         }
                       //  $ret += 3 ;
                     }else{
                         //$ret += 4 ;
                         $ret = "Помилка входу";
                     }
+                }else{
+                    //$ret += 4 ;
+                    $ret = "Помилка входу";
                 }
             }
         }

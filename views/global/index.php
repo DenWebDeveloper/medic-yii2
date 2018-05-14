@@ -74,18 +74,22 @@ $this->registerJs($JS);
 ?>
 
 <?php if(Yii::$app->session->hasFlash ('success')):?>
+<div class="alert alert-success" role="alert">
 	<?= Yii::$app->session->getFlash ('success')?>
+</div>
 <?php endif;?>
 
 <?php if(Yii::$app->session->hasFlash ('error')):?>
+<div class="alert alert-danger" role="alert">
 	<?=  Yii::$app->session->getFlash ('error')?>
+</div>
 <?php endif;?>
 <?php $form = ActiveForm::begin()?>
 
-<?=$form->field($Registration, 'region')->dropDownList($region,['prompt'=>'Виберіть олбасть'])?>
-<?=$form->field($Registration, 'city')->dropDownList ([],['prompt'=>'Виберіть місто','disabled'=>'true'])?>
-<?=$form->field($Registration, 'firm_pharmacy')->dropDownList ([],['prompt'=>'Виберіть мережу аптек','disabled'=>'disabled'])?>
-<?=$form->field($Registration, 'Id_phar')->dropDownList ([],['prompt'=>'Виберіть аптеку','disabled'=>'true'])?>
+<?=$form->field($Registration, 'region')->label('Оберіть область')->dropDownList($region,['prompt'=>'Оберіть олбасть'])?>
+<?=$form->field($Registration, 'city')->label('Оберіть населений пункт')->dropDownList ([],['prompt'=>'Оберіть місто','disabled'=>'true'])?>
+<?=$form->field($Registration, 'firm_pharmacy')->label('Оберіть мережу аптек')->dropDownList ([],['prompt'=>'Оберіть мережу аптек','disabled'=>'disabled'])?>
+<?=$form->field($Registration, 'Id_phar')->label('Оберіть аптеку')->dropDownList ([],['prompt'=>'Оберіть аптеку','disabled'=>'true'])?>
 <?=$form->field($Registration,'secondname')?>
 <?=$form->field($Registration,"name")?>
 <?=$form->field($Registration,"surname")?>
