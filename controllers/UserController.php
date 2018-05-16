@@ -7,6 +7,7 @@
  */
 
 namespace app\controllers;
+use app\models\Product;
 
 
 class UserController extends AppController
@@ -14,7 +15,9 @@ class UserController extends AppController
     public function actionIndex()
     {
        if($this->privelegy() == "user"){
-           return $this->render('index');
+
+           $product  = Product::find()->select ( [ 'id','title','description' ] )->AsArray()->All();
+           return $this->render('index',compact('product'));
        }else{
            return $this->redirect('/global/exit');
        }
