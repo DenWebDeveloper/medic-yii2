@@ -73,9 +73,12 @@ class GlobalController extends controller{
                 if ($user_hash){
                     if (password_verify(md5($LoginModel->pass."GoodSaltU8Tf"), $user_hash["pass"])) {
                         if ($user_hash['type'] != null && $user_hash['id'] !=null ){
+
                             if ($user_hash['type']=='user') {
                                 $_SESSION['user_type'] = $user_hash['type'];
                                 $_SESSION['user_id'] = $user_hash['id'];
+
+                                RegistrationForm::find()->select([])->where('')->One();
 
                                 return $this->redirect('/'.$_SESSION['user_type']);
 

@@ -18,7 +18,7 @@ class PharmController extends AppController
 
             $ph = Connect::find()->select('id_product')->asArray()->where(['id_pharm'=>$_SESSION['id_firm_pharm']])->All();
 
-            if ($ph!== null){
+            if ($ph != null){
                 $product = null;
                 $e =0 ;
                 foreach($ph as $ph2){
@@ -28,7 +28,8 @@ class PharmController extends AppController
                 }
                 return $this->render('index',compact('product'));
             }else {
-                return $this->render('index',compact('product'));
+                $alert = "Ваша мережа ще не підписала договору з жодною фірмою!";
+                return $this->render('index',compact('alert'));
             }
         }else{
             return $this->redirect('/global/exit');
