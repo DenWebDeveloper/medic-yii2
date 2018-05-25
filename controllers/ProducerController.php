@@ -8,13 +8,16 @@
 
 namespace app\controllers;
 
+use app\models\Product;
 
 class ProducerController extends AppController
 {
     public function actionIndex()
     {
         if($this->privelegy() == "firm"){
-            return $this->render('index');
+            $product = Product::find()->select( [ 'id','title','description' ] )->where(['id_producer' => $_SESSION['producer_id']])->AsArray()->All();
+
+            return $this->render('index',compact('product'));
         }else{
             return $this->redirect('/global/exit');
         }

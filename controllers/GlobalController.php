@@ -76,6 +76,7 @@ class GlobalController extends controller{
                             if ($user_hash['type']=='user') {
                                 $_SESSION['user_type'] = $user_hash['type'];
                                 $_SESSION['user_id'] = $user_hash['id'];
+
                                 return $this->redirect('/'.$_SESSION['user_type']);
 
                             }
@@ -94,7 +95,7 @@ class GlobalController extends controller{
                                 $_SESSION['phat_logo'] = $pharm['phat_logo'];
                                 $_SESSION['user_name'] = $pharm['name'];
                                 $_SESSION['producer_id'] = $pharm['id'];
-                                return $this->redirect('/'.$_SESSION['user_type']);
+                                return $this->redirect('/producer ');
                             }
                             //admin
                             if ($user_hash['type']=='admin'){

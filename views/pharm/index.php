@@ -7,8 +7,6 @@
  */
 
 ?>
-<h1>pharm page</h1>
-
 
 <h2 class="medicine__title">Препарати</h2>
 <div class="row">
@@ -24,103 +22,15 @@
     </div>
 </div>
 <div class="card-deck">
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer">
-            <button class="btn btn-info" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</button>
+
+    <?php foreach ($product as $prod):?>
+        <div class="card"><a class="card-body" href="<?=$prod['id']?>"">
+            <h5 class="card-title"><?=$prod['title']?></h5></a>
+            <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Пройти тест</a></div>
+            <div class="card-footer"><small class="text-muted">Останнє оновлення файлів ... днів тому</small></div>
         </div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
-    <div class="card"><a class="card-body" href="#">
-            <h5 class="card-title">Евказолін</h5></a>
-        <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Активовані мережі</a></div>
-        <div class="card-footer"><small class="text-muted">Останнє оновлення файлів 5 днів тому</small></div>
-    </div>
+    <?php endforeach;?>
+
 </div>
 <div class="row">
     <button class="btn btn-lg btn-primary mx-auto mb-4" type="button">Показати ще</button>
