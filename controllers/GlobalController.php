@@ -12,7 +12,7 @@ use app\models\List_user;
 use app\models\Region;
 use app\models\Login;
 use app\models\Producer;
-use app\models\Firm;
+use app\models\Phar;
 use app\models\User_pharm;
 use yii\web\Controller;
 use Yii;
@@ -77,8 +77,9 @@ class GlobalController extends controller{
                             if ($user_hash['type']=='user') {
                                 $_SESSION['user_type'] = $user_hash['type'];
                                 $_SESSION['user_id'] = $user_hash['id'];
-
-                                RegistrationForm::find()->select([])->where('')->One();
+                                $_SESSION['phar_id'] = RegistrationForm::find()->select('phar_id')->where(['user_id' => $_SESSION['user_id']])->asArray()->One();
+                                $phar = Phar::find()->select('firm_id')->where(['phar_id' => $_SESSION['phar_id'] ])->One();
+                                $_SESSION['id_firm_pharm'] = $phar['firm_id'];
 
                                 return $this->redirect('/'.$_SESSION['user_type']);
 

@@ -7,6 +7,7 @@
  */
 
 namespace app\controllers;
+use app\models\Product;
 
 
 class AdminController extends AppController
@@ -14,7 +15,8 @@ class AdminController extends AppController
     public function actionIndex()
     {
         if($this->privelegy() == "admin"){
-            return $this->render('index');
+                        $product = Product::find()->select(['id','title','description'])->all();
+            return $this->render('index',compact('product'));
         }else{
             return $this->redirect('/global/exit');
         }
