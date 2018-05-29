@@ -38,4 +38,10 @@ class UserController extends AppController
         }
     }
 
+    public function actionHello () {
+        if($this->privelegy() == "user") {
+             echo 'hello';
+        }
+    }
+
 }

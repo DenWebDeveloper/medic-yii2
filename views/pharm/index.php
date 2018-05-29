@@ -39,6 +39,8 @@
     </div>
     <?php endif;?>
 
+
+
 </div>
 <div class="row">
     <button class="btn btn-lg btn-primary mx-auto mb-4" type="button">Показати ще</button>
