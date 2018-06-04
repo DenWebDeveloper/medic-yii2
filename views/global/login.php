@@ -9,7 +9,7 @@
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 //echo $ret;
-if ($ret!= null){
+if (isset($ret)){
     echo "<div class=\"alert alert-danger\" role=\"alert\">";
 echo $ret;
 echo "</div>";

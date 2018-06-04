@@ -68,7 +68,7 @@ class AdminController extends AppController
             if ($Connect->load(Yii::$app->request->post())) {
 //           var_dump($Product->title);
                 if ($Connect->validate()) {
-//                    $Connect->save();
+                    $Connect->save();
                     Yii::$app->session->SetFlash('success', 'Дані прийняті');
                     return $this->redirect('/' . $_SESSION['user_type']);
                 } else {

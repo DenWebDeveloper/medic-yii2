@@ -25,9 +25,10 @@ class UserController extends AppController
                 $e =0 ;
                 foreach($ph as $ph2){
 //                    $ph2['id_product'];
-                    $product[$e] = Product::find()->select(['id','title','description'])->where(['id_producer'=>$ph2['id_product']])->One();
+                    $product[$e] = Product::find()->select(['id','title','description'])->where(['id'=>$ph2['id_product']])->One();
                     $e++;
                 }
+                //var_dump($product);
                 return $this->render('index',compact('product'));
             }else {
                 $alert = "Ваша мережа ще не підписала договору з жодною фірмою!";

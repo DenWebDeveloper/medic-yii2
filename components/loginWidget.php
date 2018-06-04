@@ -27,7 +27,7 @@ class loginWidget extends Widget{
                 $user = RegistrationForm::find()->select(['name','phar_id'])->asArray()->where(['user_id' => $session->get("user_id")])->One();
                 $session->set('user_name',$user["name"]);
                 $firm = Phar::find()->select(['firm_id'])->asArray()->where(['phar_id' => $user["phar_id"]])->One();
-                $session->set('user_firm_id',$user["firm_id"]);
+                $session->set('user_firm_id',$firm["firm_id"]);
                 return '<li class="nav-item"><a class="nav-link nav-link--registration" href="">' . $session->get("user_name") . '</a></li>
                         <li class="nav-item"><a class="nav-link nav-link--login" href="/global/exit" >Вихід</a></li>';
             }

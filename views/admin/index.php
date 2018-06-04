@@ -32,7 +32,7 @@ if(Yii::$app->session->hasFlash ('success')):?>
     </div>
 </div>
 <div class="card-deck">
-    <?php if($product != null):?>
+    <?php if(isset($product)):?>
         <?php foreach ($product as $prod):?>
             <div class="card"><a class="card-body" href="<?=$prod['id']?>"">
                 <h5 class="card-title"><?=$prod['title']?></h5></a>
@@ -43,9 +43,9 @@ if(Yii::$app->session->hasFlash ('success')):?>
         <?php endforeach;?>
     <?php endif;?>
 
-    <?php if($alert != null):?>
+    <?php if(isset($alert)):?>
         <div class="alert alert-danger" role="alert">
-            <?=  $alert?>
+            <?=  $alert?>isset($alert)
         </div>
     <?php endif;?>
 </div>
