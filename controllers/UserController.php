@@ -39,6 +39,21 @@ class UserController extends AppController
         }
     }
 
+    public function actionTest($id_pr){
+
+        $ph = Connect::find()->select('id_product')->asArray()->where(['id_pharm'=>$_SESSION['id_firm_pharm']])->where(['and','id_product = '.$id_pr])->One();
+
+        if ($ph != null){
+            $product = null;
+         //echo $ph['id_product'] ;
+            return $this->render('test');
+        }else {
+            $alert = "У вашої мережі немає договору на цей препарат!    ";
+            return $this->render('index',compact('alert'));
+        }
+
+    }
+
     public function actionHello () {
         if($this->privelegy() == "user") {
              echo 'hello';
