@@ -28,25 +28,25 @@ class loginWidget extends Widget{
                 $session->set('user_name',$user["name"]);
                 $firm = Phar::find()->select(['firm_id'])->asArray()->where(['phar_id' => $user["phar_id"]])->One();
                 $session->set('user_firm_id',$firm["firm_id"]);
-                return '<li class="nav-item"><a class="nav-link nav-link--registration" href="">' . $session->get("user_name") . '</a></li>
+                return '<li class="nav-item"><a class="nav-link nav-link--registration" href="/user">' . $session->get("user_name") . '</a></li>
                         <li class="nav-item"><a class="nav-link nav-link--login" href="/global/exit" >Вихід</a></li>';
             }
             if ($session->get('user_type') == 'pharm') {
                 $user = Firm::find()->select(['name_firm'])->asArray()->where(['firm_id' => $session->get("id_firm_pharm")])->One();
                 $session->set('user_name',$user["name_firm"]);
-                return '<li class="nav-item"><a class="nav-link nav-link--registration" href="">Представник мережі: ' . $session->get("user_name") . '</a></li>
+                return '<li class="nav-item"><a class="nav-link nav-link--registration" href="/pharm">Представник мережі: ' . $session->get("user_name") . '</a></li>
                         <li class="nav-item"><a class="nav-link nav-link--login" href="/global/exit" >Вихід</a></li>';
             }
             if ($session->get('user_type') == 'firm') {
                 // $user = RegistrationForm::find()->select(['name'])->asArray()->where(['user_id' => $session->get("user_id")])->One();
-                return '<li class="nav-item"><a class="nav-link nav-link--registration" href="">Представник Фірми, ' . $session->get("user_name") . '</a></li>
+                return '<li class="nav-item"><a class="nav-link nav-link--registration" href="/producer">Представник Фірми, ' . $session->get("user_name") . '</a></li>
                         <li class="nav-item"><a class="nav-link nav-link--login" href="/global/exit" >Вихід</a></li>';
             }
             // admin
             if ($session->get('user_type') == 'admin') {
                 $session->set('user_name',$session->get("admin_id"));
                 // $user = RegistrationForm::find()->select(['name'])->asArray()->where(['user_id' => $session->get("user_id")])->One();
-                return '<li class="nav-item"><a class="nav-link nav-link--registration" href="">ADMIN # ' . $session->get("user_name") . '</a></li>
+                return '<li class="nav-item"><a class="nav-link nav-link--registration" href="/admin">ADMIN # ' . $session->get("user_name") . '</a></li>
                         <li class="nav-item"><a class="nav-link nav-link--login" href="/global/exit" >Вихід</a></li>';
             }
         } else {

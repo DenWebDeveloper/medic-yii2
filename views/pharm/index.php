@@ -25,10 +25,10 @@
 
     <?php if(isset($product)):?>
     <?php foreach ($product as $prod):?>
-        <div class="card"><a class="card-body" href="<?=$prod['id']?>"">
+        <div class="card"><a class="card-body" href="/pharm/statistic?id_pr=<?=$prod['id']?>"">
             <h5 class="card-title"><?=$prod['title']?></h5></a>
             <div class="card-footer"><a class="btn btn-info" role="button" href="#" data-toggle="tooltip" title="Список мереж яким доступні матеріали">Пройти тест</a></div>
-            <div class="card-footer"><small class="text-muted">Останнє оновлення файлів ... днів тому</small></div>
+            <div class="card-footer"><small class="text-muted"><?=$prod['description']?></small></div>
         </div>
     <?php endforeach;?>
     <?php endif;?>

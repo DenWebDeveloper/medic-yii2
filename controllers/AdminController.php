@@ -7,9 +7,12 @@
  */
 
 namespace app\controllers;
+use app\models\Answer;
 use app\models\Firm;
 use app\models\Connect;
 use app\models\Product;
+use app\models\Test;
+use app\models\Intest;
 use app\models\Producer;
 use Yii;
 
@@ -98,4 +101,98 @@ class AdminController extends AppController
         }
         return $this->redirect('/' . $_SESSION['user_type']);
     }
+
+    public function actionTest($id_pr){
+
+                $product = null;
+
+                $test = test::find()->asArray()->where(['id_product'=> $id_pr])->One();
+
+                //echo '1'.$test['id'].'2';
+                if($test['id'] != null) {
+                    $question = intest::find()->asArray()->where(['id_test' => $test['id']])->All();
+                    return $this->render('test', compact('question','id_pr','test'));
+                }
+               // var_dump($question);
+                return $this->render('test', compact('id_pr','test'));
+
+    }
+
+    public function actionQuestion($id_question){
+
+        $question = intest::find()->asArray()->where(['id'=>$id_question])->One();
+
+        $test = test::find()->asArray()->where(['id'=>$question['id_test']])->One();
+
+        $answer = answer::find()->asArray()->where(['id_question'=>$id_question])->All();
+
+        //var_dump($answer);
+        return $this->render('question', compact('answer','question','test'));
+
+    }
+
+    public function actionAdd_question($id_pr){
+
+        //$answer = answer::find()->asArray()->where(['id_question'=>$id_question])->All();
+
+        //var_dump($answer);
+        return $this->render('question', compact('answer'));
+
+    }
+
+    public function actionAdd_test($id_pr){
+
+
+        if ($this->privelegy() == "admin") {
+            $Test = new Test();
+
+
+//        var_dump($Product->title);
+            if ($Test->load(Yii::$app->request->post())) {
+//           var_dump($Product->title);
+                if ($Test->validate()) {
+                    //$Test->save();
+                    Yii::$app->session->SetFlash('success', 'Дані прийняті');
+                    return $this->redirect('/' . $_SESSION['user_type']);
+                } else {
+                    Yii::$app->session->SetFlash('error', 'Помилка');
+                }
+            }
+//            Yii::$app->session->SetFlash('success', 'Дані прийняті');
+
+
+            //$producer = Producer::find()->select(['name', 'id'])->indexBy('id')->column();
+
+            return $this->render('add_test', compact('Test'));
+        }
+
+    }
+
+    public function actionAdd_answer($id_question){
+
+
+        if ($this->privelegy() == "admin") {
+            $Answer = new Answer();
+
+//        var_dump($Product->title);
+            if ($Answer->load(Yii::$app->request->post())) {
+           //var_dump($Answer->answer);
+                if ($Answer->validate())
+
+                    $Answer->id_question = $id_question ;
+                    $Answer->save();
+                    Yii::$app->session->SetFlash('success', 'Дані прийняті');
+                    return $this->redirect('/admin/question?id_question='.$id_question);
+                } else {
+                    Yii::$app->session->SetFlash('error', 'Помилка');
+                }
+            }
+//            Yii::$app->session->SetFlash('success', 'Дані прийняті');
+
+
+            //$producer = Producer::find()->select(['name', 'id'])->indexBy('id')->column();
+
+            return $this->render('add_answer', compact('Answer'));
+        }
+
 }

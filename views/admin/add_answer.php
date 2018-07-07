@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: NeoN
- * Date: 28.05.2018
- * Time: 23:01
+ * Date: 15.06.2018
+ * Time: 9:23
  */
 
 
@@ -26,10 +26,8 @@ if(Yii::$app->session->hasFlash ('success')):?>
 
 <?php $form = ActiveForm::begin()?>
 
-<?=$form->field($Product,'title')->label('Назва препарату')?>
-<?=$form->field($Product,"description")->label('Опис препарату')?><!--<div class="g-recaptcha" data-sitekey="6Le_H1AUAAAAACGhLY9m0oXjwgD1AS0iEWH9giph"></div>-->
-<?php //$form->field($Registration,"password_repeat")?>
-<?=$form->field($Product, 'id_producer')->label('Оберіть виробника')->dropDownList($producer,['prompt'=>'Оберіть виробника'])?>
+<?=$form->field($Answer,"answer")->label('Текст відповіді')?><!--<div class="g-recaptcha" data-sitekey="6Le_H1AUAAAAACGhLY9m0oXjwgD1AS0iEWH9giph"></div>-->
+<?=$form->field($Answer,'is_true')->label('Відповідь вірна ? 1 - якщо так /0 - якщо ні')?>
 <?=Html::submitButton ("Відправити", ['class' => "btn btn-success"])?>
     <!---->
 <?php ActiveForm::end ()?>

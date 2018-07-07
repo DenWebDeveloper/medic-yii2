@@ -8,7 +8,10 @@
 
 namespace app\controllers;
 use app\models\Connect;
+use app\models\List_user;
 use app\models\Product;
+use app\models\Test;
+use app\models\Test_stat;
 
 class PharmController extends AppController
 {
@@ -33,6 +36,26 @@ class PharmController extends AppController
             }
         }else{
             return $this->redirect('/global/exit');
+        }
+    }
+
+    public function actionStatistic()
+    {
+        if ($this->privelegy() == "pharm") {
+
+            $stat = test_stat::find()->asArray()->all();
+
+            $e = 0;
+            foreach($stat as $sta){
+                $val = test::find()->select('description')->where(['id'=> $sta['id_test']])->asArray()->One();
+
+                $val2 = List_user::find()->select();
+                $stat[$e]['description'] = $val['description'];
+              //  echo $stat[$e]['description'].'<br>' ;
+                $e++;
+            }
+
+            return $this->render('statistic',compact('stat'));
         }
     }
 }

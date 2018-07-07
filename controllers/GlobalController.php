@@ -47,7 +47,6 @@ class GlobalController extends controller{
 					}
 
 					Yii::$app->session->SetFlash ( 'success' , 'Дані прийняті' );
-
 					return $this->refresh ();
 				} else {
 					Yii::$app->session->SetFlash ( 'error' , 'Такий Email вже зареєстрований' );
@@ -131,6 +130,9 @@ class GlobalController extends controller{
         $session->remove('producer_id');
         $session->remove('phat_logo');
         $session->remove('user_type');
+        $session->remove('arr');
+        $session->remove('lasttime');
+        $session->remove('test');
         return $this->redirect('/');
     }
 
